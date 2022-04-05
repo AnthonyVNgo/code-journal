@@ -2,7 +2,6 @@
 /* exported data */
 
 var inputElement = document.querySelector('#url');
-
 var imgSource = document.querySelector('img');
 
 function input(event) {
@@ -12,7 +11,6 @@ function input(event) {
 inputElement.addEventListener('input', input);
 
 var formElement = document.querySelector('form');
-
 var titleEl = document.querySelector('#title');
 var urlEl = document.querySelector('#url');
 var notesEl = document.querySelector('#notes');
@@ -27,7 +25,7 @@ function submit(event) {
     ID: data.nextEntryId
   };
 
-  data.entries.push(inputValue);
+  data.entries.unshift(inputValue);
   data.nextEntryId++;
   formElement.reset();
 }
