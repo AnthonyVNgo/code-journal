@@ -13,6 +13,8 @@ function input(event) {
 
 inputElement.addEventListener('input', input);
 
+var formElement = document.querySelector('form');
+
 var titleEl = document.querySelector('#title');
 var urlEl = document.querySelector('#url');
 var notesEl = document.querySelector('#notes');
@@ -34,7 +36,10 @@ function submit(event) {
   entryNumber++;
   // console.log(entryNumber);
   // console.log(inputValue);
+  data.entries.push(inputValue);
+  // console.log(data);
   event.preventDefault();
+  formElement.reset();
 }
 
 document.addEventListener('submit', submit);
