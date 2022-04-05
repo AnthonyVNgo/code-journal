@@ -35,12 +35,12 @@ function submit(event) {
   // inputValue.ID = entryNumber;
   inputValue.ID = data.nextEntryId;
   // entryNumber++;
-  data.nextEntryId++;
   // console.log(entryNumber);
   // console.log(inputValue);
   data.entries.push(inputValue);
   // console.log(data);
-  event.preventDefault();
+  // event.preventDefault();
+  data.nextEntryId++;
   formElement.reset();
 }
 
