@@ -5,6 +5,8 @@ header {
 img {
   max-width: 100%;
   margin: 0 0 24px;
+  height: auto;
+  object-fit: cover;
 }
 
 input {
