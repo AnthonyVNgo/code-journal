@@ -17,16 +17,22 @@ var titleEl = document.querySelector('#title');
 var urlEl = document.querySelector('#url');
 var notesEl = document.querySelector('#notes');
 
+var entryNumber = data.nextEntryId;
+
 var inputValue = {
   title: '',
   url: '',
-  notes: ''
+  notes: '',
+  nextEntryID: entryNumber
 };
 
 function submit(event) {
   inputValue.title = titleEl.value;
   inputValue.url = urlEl.value;
   inputValue.notes = notesEl.value;
+  inputValue.nextEntryID = entryNumber;
+  entryNumber++;
+  // console.log(entryNumber);
   // console.log(inputValue);
   event.preventDefault();
 }
