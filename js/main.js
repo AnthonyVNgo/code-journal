@@ -25,15 +25,17 @@ var inputValue = {
   title: '',
   url: '',
   notes: '',
-  nextEntryID: entryNumber
+  ID: entryNumber
 };
 
 function submit(event) {
   inputValue.title = titleEl.value;
   inputValue.url = urlEl.value;
   inputValue.notes = notesEl.value;
-  inputValue.nextEntryID = entryNumber;
-  entryNumber++;
+  // inputValue.ID = entryNumber;
+  inputValue.ID = data.nextEntryId;
+  // entryNumber++;
+  data.nextEntryId++;
   // console.log(entryNumber);
   // console.log(inputValue);
   data.entries.push(inputValue);
