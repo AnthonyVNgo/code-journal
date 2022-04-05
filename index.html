@@ -13,12 +13,88 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=Proza+Libre:wght@400;600&display=swap"
+  rel="stylesheet">
 </head>
+
 <body>
+
   <header>
+
+    <div class="container">
+      <div class="row header-height">
+        <div class="column-half height-fit-content align-self-center">
+          <p class="logo align-self-center">Code Journal</p>
+        </div>
+      </div>
+    </div>
+
   </header>
+
   <main>
+
+    <div data-view="entry-form">
+
+      <form action="">
+
+        <div class="container">
+
+          <div class="row">
+            <div class="column-full">
+              <p class="entry">New Entry</p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="column-half">
+              <img src="images/placeholder-image-square.jpg" alt="">
+            </div>
+
+
+            <div class="column-half">
+
+              <div class="input-container">
+                <label for="title">Title</label>
+                <div>
+                  <input type="text" id="title" required>
+                </div>
+              </div>
+
+              <div class="input-container">
+                <label for="url">Photo URL</label>
+                <div>
+                  <input type="text" id="url" required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column-full">
+              <label for="notes">Notes</label>
+              <div>
+                <textarea name="notes" id="notes" cols="30" rows="10" required></textarea>
+              </div>
+              <div class="position-relative">
+                <button class="save-button">SAVE</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </form>
+
+    </div>
+
   </main>
+
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
