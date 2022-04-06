@@ -1,0 +1,62 @@
+header {
+  background-color: #562b81;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  margin: 0 0 25px;
+}
+
+img {
+  height: 245px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 0;
+}
+
+p.logo {
+  color: white;
+  font-size: 20px;
+  line-height: 27.3px;
+  font-weight: 400;
+  font-family: "Proza Libre", sans-serif;
+  margin: 0;
+}
+
+p.entry {
+  font-size: 30px;
+  line-height: 40.72px;
+  font-weight: 600;
+  font-family: "Proza Libre", sans-serif;
+  margin: 16px 0;
+}
+
+p.title {
+  font-size: 24px;
+  line-height: 32.5px;
+  font-weight: 600;
+  font-family: "Proza Libre", sans-serif;
+  margin: 0 0 10px;
+}
+
+p.text {
+  font-size: 16px;
+  line-height: 25px;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+}
+
+.header-height {
+  height: 53px;
+}
+
+.align-self-center {
+  align-self: center;
+}
