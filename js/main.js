@@ -12,18 +12,17 @@ function createEntry(entry) {
 
   liEl.setAttribute('class', 'row');
   imgEl.setAttribute('class', 'column-half');
-  imgEl.setAttribute('src', test.url);
+  imgEl.setAttribute('src', entry.url);
   divEl.setAttribute('class', 'column-half');
   ptitleEl.setAttribute('class', 'title');
-  ptitleEl.textContent = test.title;
+  ptitleEl.textContent = entry.title;
   ptextEl.setAttribute('class', 'text');
-  ptextEl.textContent = test.notes;
+  ptextEl.textContent = entry.notes;
 
   liEl.appendChild(imgEl);
   liEl.appendChild(divEl);
   divEl.appendChild(ptitleEl);
   divEl.appendChild(ptextEl);
-
   entriesListEl.appendChild(liEl);
 }
 
@@ -48,9 +47,9 @@ document.addEventListener('DOMContentLoaded', contentLoaded);
 //   ID: data.nextEntryId
 // };
 
-var test = {
-  title: 'adngfsjodfosinsddso',
-  url: 'images/placeholder-image-square.jpg',
-  notes: 'spdofjaoighojfaojsfigosjgifo',
-  ID: data.nextEntryId
-};
+// var test = {
+//   title: 'adngfsjodfosinsddso',
+//   url: 'images/placeholder-image-square.jpg',
+//   notes: 'spdofjaoighojfaojsfigosjgifo',
+//   ID: data.nextEntryId
+// };
