@@ -33,6 +33,7 @@ function contentLoaded(event) {
   for (var i = 0; i < data.entries.length; i++) {
     var addingToList = createEntry(data.entries[i]);
     entriesListEl.appendChild(addingToList);
+    data.view = 'entries';
   }
 }
 
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', contentLoaded);
 var newEntryButton = document.querySelector('.new-button');
 
 function viewSwap(event) {
+  data.view = 'entry-form';
   event.preventDefault();
 
   var entriesDivEl = document.querySelector('#entries-container');
@@ -55,6 +57,8 @@ newEntryButton.addEventListener('click', viewSwap);
 var entriesNavEl = document.querySelector('.entries-nav');
 
 function homeScreenViewSwap(event) {
+  data.view = 'entries';
+
   var entriesDivEl = document.querySelector('#entries-container');
   entriesDivEl.setAttribute('class', 'container');
 
@@ -101,7 +105,7 @@ function save(event) {
   entriesFormEl.setAttribute('class', 'hidden');
 
   entriesListEl.prepend(createEntry(data.entries[0]));
-
+  data.view = 'entries';
 }
 
 document.addEventListener('submit', save);
