@@ -2,7 +2,6 @@
 /* exported data */
 
 function createEntry(entry) {
-  // var entriesListEl = document.querySelector('#entries-list');
   var liEl = document.createElement('li');
   var divImgEl = document.createElement('div');
   var imgEl = document.createElement('img');
@@ -29,7 +28,7 @@ function createEntry(entry) {
 
 var entriesListEl = document.querySelector('#entries-list');
 
-function showpage(dataview) {
+function pageLoad(dataview) {
   if (data.view === 'entries') {
     var entriesDivEl = document.querySelector('#entries-container');
     entriesDivEl.setAttribute('class', 'container');
@@ -51,7 +50,7 @@ function contentLoaded(event) {
     entriesListEl.appendChild(addingToList);
   }
 
-  showpage(data.view);
+  pageLoad(data.view);
 
 }
 

@@ -13,22 +13,15 @@ var data = {
   nextEntryId: 1
 };
 
-function saveToLocalStorage(event) {
-  var dataModelJSON = JSON.stringify(data);
-  localStorage.setItem('data model', dataModelJSON);
-}
-
-window.addEventListener('submit', saveToLocalStorage);
-
 var savedDataModelJSON = localStorage.getItem('data model');
 
 if (savedDataModelJSON !== null) {
   data = JSON.parse(savedDataModelJSON);
 }
 
-function saveCurrentView(event) {
+function saveToLocalStorage(event) {
   var dataModelJSON = JSON.stringify(data);
   localStorage.setItem('data model', dataModelJSON);
 }
 
-window.addEventListener('beforeunload', saveCurrentView);
+window.addEventListener('beforeunload', saveToLocalStorage);
