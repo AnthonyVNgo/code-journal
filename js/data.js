@@ -25,3 +25,10 @@ var savedDataModelJSON = localStorage.getItem('data model');
 if (savedDataModelJSON !== null) {
   data = JSON.parse(savedDataModelJSON);
 }
+
+function saveCurrentView(event) {
+  var dataModelJSON = JSON.stringify(data);
+  localStorage.setItem('data model', dataModelJSON);
+}
+
+window.addEventListener('beforeunload', saveCurrentView);

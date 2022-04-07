@@ -29,12 +29,30 @@ function createEntry(entry) {
 
 var entriesListEl = document.querySelector('#entries-list');
 
+function showpage(dataview) {
+  if (data.view === 'entries') {
+    var entriesDivEl = document.querySelector('#entries-container');
+    entriesDivEl.setAttribute('class', 'container');
+
+    var entriesFormEl = document.querySelector('#entries-form-container');
+    entriesFormEl.setAttribute('class', 'hidden');
+  } else if (data.view === 'entry-form') {
+    entriesDivEl = document.querySelector('#entries-container');
+    entriesDivEl.setAttribute('class', 'hidden');
+
+    entriesFormEl = document.querySelector('#entries-form-container');
+    entriesFormEl.setAttribute('class', 'container');
+  }
+}
+
 function contentLoaded(event) {
   for (var i = 0; i < data.entries.length; i++) {
     var addingToList = createEntry(data.entries[i]);
     entriesListEl.appendChild(addingToList);
-    data.view = 'entries';
   }
+
+  showpage(data.view);
+
 }
 
 document.addEventListener('DOMContentLoaded', contentLoaded);
