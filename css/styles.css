@@ -2,11 +2,24 @@ header {
   background-color: #562b81;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+li {
+  margin: 0 0 25px;
+}
+
 img {
-  max-width: 100%;
-  margin: 0 0 24px;
   height: auto;
+  width: 100%;
   object-fit: cover;
+  object-position: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 0;
 }
 
 input {
@@ -28,6 +41,15 @@ label {
   font-family: "Proza Libre", sans-serif;
 }
 
+i.fa-solid.fa-pencil {
+  font-size: 25px;
+  color: #562b81;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
 p.logo {
   color: white;
   font-size: 20px;
@@ -35,6 +57,7 @@ p.logo {
   font-weight: 400;
   font-family: "Proza Libre", sans-serif;
   margin: 0;
+  display: inline;
 }
 
 p.entry {
@@ -45,21 +68,84 @@ p.entry {
   margin: 16px 0;
 }
 
-.header-height {
-  height: 53px;
+p.title {
+  font-size: 24px;
+  line-height: 32.5px;
+  font-weight: 600;
+  font-family: "Proza Libre", sans-serif;
+  margin: 0 0 10px;
 }
 
-.header-container {
-  margin: 0 auto;
-  max-width: 100%;
+p.text {
+  font-size: 16px;
+  line-height: 25px;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+}
+
+.header-height {
+  height: 53px;
 }
 
 .align-self-center {
   align-self: center;
 }
 
-.height-fit-content {
-  height: fit-content;
+.layout-padding {
+  padding: 0;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+
+.new-button {
+  background-color: #562b81;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 17px;
+  border-style: none;
+  font-size: 16px;
+  line-height: 21.79px;
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 1.5px;
+  margin: 25px 0;
+  text-decoration: none;
+}
+
+.entries-nav {
+  display: inline;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  color: white;
+  margin: 0 20px;
+}
+
+.input-container {
+  margin: 0 0 15px;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-right {
+  right: 0;
+}
+
+.position-top {
+  top: 0;
+}
+
+.justify-content-flex-end {
+  justify-content: flex-end;
 }
 
 .save-button {
@@ -77,15 +163,4 @@ p.entry {
   position: absolute;
   right: 0;
 }
-
-.justify-content-flex-end {
-  justify-content: flex-end;
-}
-
-.input-container {
-  margin: 0 0 15px;
-}
-
-.position-relative {
-  position: relative;
 }
