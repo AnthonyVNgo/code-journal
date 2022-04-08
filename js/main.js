@@ -137,11 +137,17 @@ function clicksOnParentOfEntriesList(event) {
     // console.log(event.target.parentNode.parentNode);
     // console.log(event.target.parentNode.parentNode.getAttribute('data-entry-id'));
     data.editing = event.target.closest('li').getAttribute('data-entry-id');
+    // var entryID = event.target.closest('li').getAttribute('data-entry-id');
+    // console.log(entryID);
+    // console.log(event.target.previousSiblingElement);
+    // console.log(event.target);
+    //  console.log(event.target.parentNode.childNodes[0].textContent);
+    // console.log(event.target.closest('li').childNodes[0].childNodes[0].currentSrc);
     formView();
 
-    formElement['0'].value = data.entries.title;
-    formElement['1'].value = data.entries.url;
-    formElement['2'].value = data.entries.textContent;
+    formElement['0'].value = event.target.parentNode.childNodes[0].textContent;
+    formElement['1'].value = event.target.closest('li').childNodes[0].childNodes[0].currentSrc;
+    formElement['2'].value = event.target.parentNode.childNodes[1].textContent;
   }
 }
 
