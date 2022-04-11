@@ -108,15 +108,43 @@ var newEntryImgEl = document.querySelector('#new-entry-image');
 function save(event) {
   event.preventDefault();
 
-  var inputValue = {
-    title: titleEl.value,
-    url: urlEl.value,
-    notes: notesEl.value,
-    ID: data.nextEntryId
-  };
+  if (data.editing !== null) {
+    // console.log('in editing');
 
-  data.entries.unshift(inputValue);
-  data.nextEntryId++;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].ID.toString() === data.editing) {
+        data.entries[i].title = titleEl.value;
+        data.entries[i].url = urlEl.value;
+        data.entries[i].notes = notesEl.value;
+        // console.log(data.entries[i]);
+        // console.log('index number:', i);
+
+        // entriesListEl.children[i].find('img').setAttribute('src', urlEl.value);
+        // entriesListEl.children[i].childNodes[i].childNodes[i].setAttribute('src', urlEl.valiue);
+        entriesListEl.children[i].childNodes[0].childNodes[0].setAttribute('src', urlEl.value);
+        entriesListEl.children[i].childNodes[1].childNodes[0].textContent = titleEl.value;
+        entriesListEl.children[i].childNodes[1].childNodes[1].textContent = notesEl.value;
+      }
+    }
+
+    data.editing = null;
+
+  } else if (data.editing === null) {
+    var inputValue = {
+      title: titleEl.value,
+      url: urlEl.value,
+      notes: notesEl.value,
+      ID: data.nextEntryId
+    };
+
+    data.entries.unshift(inputValue);
+    data.nextEntryId++;
+
+    entriesListEl.prepend(createEntry(data.entries[0]));
+  }
+
+  // console.log(data.editing);
+
   newEntryImgEl.setAttribute('src', 'images/placeholder-image-square.jpg');
   formElement.reset();
 
@@ -126,8 +154,10 @@ function save(event) {
   var entriesFormEl = document.querySelector('#entries-form-container');
   entriesFormEl.setAttribute('class', 'hidden');
 
-  entriesListEl.prepend(createEntry(data.entries[0]));
   data.view = 'entries';
+
+  // entriesListEl.prepend(createEntry(data.entries[0]));
+  // data.view = 'entries';
 }
 
 document.addEventListener('submit', save);
@@ -138,7 +168,8 @@ function clicksOnParentOfEntriesList(event) {
     // console.log(event.target.parentNode.parentNode.getAttribute('data-entry-id'));
     data.editing = event.target.closest('li').getAttribute('data-entry-id');
     // var entryID = event.target.closest('li').getAttribute('data-entry-id');
-    // console.log(entryID);
+    // console.log('clicksOnParentEntriesList event fired', entryID);
+    // console.log('data.editing value:', data.editing);
     // console.log(event.target.previousSiblingElement);
     // console.log(event.target);
     //  console.log(event.target.parentNode.childNodes[0].textContent);
