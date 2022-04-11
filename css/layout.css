@@ -31,4 +31,24 @@
   .column-half {
     width: 50%;
   }
+
+  .title {
+    margin: 0;
+  }
+
+  div.column-half > img {
+    height: 340px;
+    border-radius: 10px;
+    width: 345px;
+    padding: 0;
+    margin: 0;
+  }
+
+  div.column-half {
+    padding: 0;
+  }
+
+  li.row {
+    margin: 0 0 55px;
+  }
 }

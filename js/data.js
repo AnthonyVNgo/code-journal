@@ -1,5 +1,11 @@
 /* exported data */
 
+// this is the home page
+// data-view="entries"
+
+// this is the forms popup
+// data-view="entry-form"
+
 var data = {
   view: 'entry-form',
   entries: [],
@@ -7,9 +13,15 @@ var data = {
   nextEntryId: 1
 };
 
+var savedDataModelJSON = localStorage.getItem('data model');
+
+if (savedDataModelJSON !== null) {
+  data = JSON.parse(savedDataModelJSON);
+}
+
 function saveToLocalStorage(event) {
   var dataModelJSON = JSON.stringify(data);
   localStorage.setItem('data model', dataModelJSON);
 }
 
-window.addEventListener('submit', saveToLocalStorage);
+window.addEventListener('beforeunload', saveToLocalStorage);
