@@ -78,6 +78,11 @@ function viewSwap(event) {
   event.preventDefault();
 
   formView();
+  formElement.children[1].children[0].childNodes[1].setAttribute('src', 'images/placeholder-image-square.jpg');
+  formElement.childNodes[1].childNodes[1].childNodes[1].textContent = 'New Entry';
+  titleEl.value = '';
+  urlEl.value = '';
+  notesEl.value = '';
 }
 
 newEntryButton.addEventListener('click', viewSwap);
@@ -179,6 +184,8 @@ function clicksOnParentOfEntriesList(event) {
     formElement['0'].value = event.target.parentNode.childNodes[0].textContent;
     formElement['1'].value = event.target.closest('li').childNodes[0].childNodes[0].currentSrc;
     formElement['2'].value = event.target.parentNode.childNodes[1].textContent;
+    formElement.children[1].children[0].childNodes[1].setAttribute('src', formElement['1'].value);
+    formElement.childNodes[1].childNodes[1].childNodes[1].textContent = 'Edit Entry';
   }
 }
 
