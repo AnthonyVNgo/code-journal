@@ -39,6 +39,7 @@ function homeView() {
 
   var entriesFormEl = document.querySelector('#entries-form-container');
   entriesFormEl.setAttribute('class', 'hidden');
+  entryHeadingEl.textContent = 'Entries';
 }
 
 function formView() {
@@ -78,11 +79,9 @@ function viewSwap(event) {
   event.preventDefault();
 
   formView();
-  formElement.children[1].children[0].childNodes[1].setAttribute('src', 'images/placeholder-image-square.jpg');
-  formElement.childNodes[1].childNodes[1].childNodes[1].textContent = 'New Entry';
-  titleEl.value = '';
-  urlEl.value = '';
-  notesEl.value = '';
+  newEntryImgEl.setAttribute('src', 'images/placeholder-image-square.jpg');
+  formHeadingEl.textContent = 'New Entry';
+  formElement.reset();
 }
 
 newEntryButton.addEventListener('click', viewSwap);
@@ -109,13 +108,13 @@ var titleEl = document.querySelector('#title');
 var urlEl = document.querySelector('#url');
 var notesEl = document.querySelector('#notes');
 var newEntryImgEl = document.querySelector('#new-entry-image');
+var entryHeadingEl = document.querySelector('.entry');
+var formHeadingEl = document.querySelector('#form-heading');
 
 function save(event) {
   event.preventDefault();
 
   if (data.editing !== null) {
-    // console.log('in editing');
-
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].ID.toString() === data.editing) {
         data.entries[i].title = titleEl.value;
