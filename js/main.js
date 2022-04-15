@@ -120,18 +120,12 @@ function save(event) {
   if (data.editing !== null) {
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].ID.toString() === data.editing) {
-        data.entries[i].title = titleEl.value;
-        data.entries[i].url = urlEl.value;
-        data.entries[i].notes = notesEl.value;
-
-        entriesListEl.children[i].replaceWith(createEntry);
-
-        entriesListEl.children[i].childNodes[0].childNodes[0].setAttribute('src', urlEl.value);
-        entriesListEl.children[i].childNodes[1].childNodes[0].textContent = titleEl.value;
-        entriesListEl.children[i].childNodes[1].childNodes[1].textContent = notesEl.value;
+        entriesListEl.children[i].querySelector('img').setAttribute('src', urlEl.value);
+        entriesListEl.children[i].querySelector('.title').textContent = titleEl.value;
+        entriesListEl.children[i].querySelector('.text').textContent = notesEl.value;
+        entriesListEl.children[i].replaceWith(createEntry(data.entries[i]));
       }
     }
-
     data.editing = null;
 
   } else if (data.editing === null) {
@@ -158,9 +152,6 @@ function save(event) {
   entriesFormEl.setAttribute('class', 'hidden');
 
   data.view = 'entries';
-
-  // entriesListEl.prepend(createEntry(data.entries[0]));
-  // data.view = 'entries';
 }
 
 document.addEventListener('submit', save);
@@ -170,10 +161,18 @@ function clicksOnParentOfEntriesList(event) {
     data.editing = event.target.closest('li').getAttribute('data-entry-id');
     formView();
 
-    formElement.title.value = event.target.parentNode.childNodes[0].textContent;
-    formElement.url.value = event.target.closest('li').childNodes[0].childNodes[0].currentSrc;
-    formElement.notes.value = event.target.parentNode.childNodes[1].textContent;
-    newEntryImgEl.setAttribute('src', formElement['1'].value);
+    var titleEl = event.target.parentNode.querySelector('.title');
+    formElement.title.value = titleEl.textContent;
+
+    var imgEl = event.target.closest('li').querySelector('img');
+    formElement.url.value = imgEl.currentSrc;
+
+    var notesEl = event.target.parentNode.querySelector('.text');
+    formElement.notes.value = notesEl.textContent;
+
+    var urlSrc = formElement.querySelector('#url');
+    newEntryImgEl.setAttribute('src', urlSrc.value);
+
     formHeadingEl.textContent = 'Edit Entry';
   }
 }
