@@ -41,6 +41,15 @@ label {
   font-family: "Proza Libre", sans-serif;
 }
 
+i.fa-solid.fa-pencil {
+  font-size: 25px;
+  color: #562b81;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
 p.logo {
   color: white;
   font-size: 20px;
@@ -112,6 +121,7 @@ p.text {
   line-height: 22px;
   font-weight: 600;
   color: white;
+  margin: 0 20px;
 }
 
 .input-container {
@@ -120,6 +130,18 @@ p.text {
 
 .position-relative {
   position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-right {
+  right: 0;
+}
+
+.position-top {
+  top: 0;
 }
 
 .justify-content-flex-end {
