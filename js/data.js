@@ -1,11 +1,5 @@
 /* exported data */
 
-// this is the home page
-// data-view="entries"
-
-// this is the forms popup
-// data-view="entry-form"
-
 var data = {
   view: 'entry-form',
   entries: [],

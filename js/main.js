@@ -13,8 +13,7 @@ var newEntryButton = document.querySelector('.new-button');
 var entriesNavEl = document.querySelector('.entries-nav');
 var inputElement = document.querySelector('#url');
 var imgSource = document.querySelector('img');
-
-// functions below
+var deleteButtonElement = document.querySelector('#delete-button');
 
 function createEntry(entry) {
   var liEl = document.createElement('li');
@@ -47,6 +46,7 @@ function createEntry(entry) {
 
 function homeView() {
   data.view = 'entries';
+  data.editing = null;
   var entriesDivEl = document.querySelector('#entries-container');
   entriesDivEl.setAttribute('class', 'container');
 
@@ -72,8 +72,6 @@ function pageLoad(dataview) {
   }
 }
 
-// contentLoaded event
-
 function contentLoaded(event) {
   for (var i = 0; i < data.entries.length; i++) {
     var addingToList = createEntry(data.entries[i]);
@@ -84,13 +82,12 @@ function contentLoaded(event) {
 
 document.addEventListener('DOMContentLoaded', contentLoaded);
 
-// newEntryViewSwap click event
-
 function newEntryViewSwap(event) {
   data.view = 'entry-form';
   event.preventDefault();
 
   formView();
+  deleteButtonDisplay();
   newEntryImgEl.setAttribute('src', 'images/placeholder-image-square.jpg');
   formHeadingEl.textContent = 'New Entry';
   formElement.reset();
@@ -98,15 +95,11 @@ function newEntryViewSwap(event) {
 
 newEntryButton.addEventListener('click', newEntryViewSwap);
 
-// homeScreenViewSwap input event
-
 function homeScreenViewSwap(event) {
   homeView();
 }
 
 entriesNavEl.addEventListener('click', homeScreenViewSwap);
-
-//
 
 function input(event) {
   imgSource.setAttribute('src', inputElement.value);
@@ -120,9 +113,9 @@ function save(event) {
   if (data.editing !== null) {
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].ID.toString() === data.editing) {
-        entriesListEl.children[i].querySelector('img').setAttribute('src', urlEl.value);
-        entriesListEl.children[i].querySelector('.title').textContent = titleEl.value;
-        entriesListEl.children[i].querySelector('.text').textContent = notesEl.value;
+        data.entries[i].url = urlEl.value;
+        data.entries[i].title = titleEl.value;
+        data.entries[i].notes = notesEl.value;
         entriesListEl.children[i].replaceWith(createEntry(data.entries[i]));
       }
     }
@@ -156,10 +149,11 @@ function save(event) {
 
 document.addEventListener('submit', save);
 
-function clicksOnParentOfEntriesList(event) {
+function editButtonClickEvent(event) {
   if (event.target.tagName === 'I') {
     data.editing = event.target.closest('li').getAttribute('data-entry-id');
     formView();
+    deleteButtonDisplay();
 
     var titleEl = event.target.parentNode.querySelector('.title');
     formElement.title.value = titleEl.textContent;
@@ -177,4 +171,44 @@ function clicksOnParentOfEntriesList(event) {
   }
 }
 
-entriesListEl.addEventListener('click', clicksOnParentOfEntriesList);
+entriesListEl.addEventListener('click', editButtonClickEvent);
+
+function deleteButtonDisplay() {
+  if (data.editing === null) {
+    deleteButtonElement.className = 'hidden';
+  } else if (data.editing !== null) {
+    deleteButtonElement.className = 'delete-button-styles';
+  }
+}
+
+function deleteButtonClickEvent(event) {
+  event.preventDefault();
+  document.querySelector('#modal').className = 'modal-overlay';
+}
+
+deleteButtonElement.addEventListener('click', deleteButtonClickEvent);
+
+var modalCancelButton = document.querySelector('.modal-cancel-button');
+
+function modalCancelButtonClickEvent(event) {
+  event.preventDefault();
+  document.querySelector('#modal').className = 'hidden';
+}
+
+modalCancelButton.addEventListener('click', modalCancelButtonClickEvent);
+
+var modalConfirmButton = document.querySelector('.modal-confirm-button');
+
+function modalConfirmButtonClickEvent(event) {
+  document.querySelector('#modal').className = 'hidden';
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].ID.toString() === data.editing) {
+      entriesListEl.children[i].remove();
+      data.entries.splice(i, 1);
+    }
+  }
+  homeView();
+}
+
+modalConfirmButton.addEventListener('click', modalConfirmButtonClickEvent);
