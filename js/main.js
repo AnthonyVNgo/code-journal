@@ -128,13 +128,11 @@ function save(event) {
       notes: notesEl.value,
       ID: data.nextEntryId
     };
-
     data.entries.unshift(inputValue);
     data.nextEntryId++;
 
     entriesListEl.prepend(createEntry(data.entries[0]));
   }
-
   newEntryImgEl.setAttribute('src', 'images/placeholder-image-square.jpg');
   formElement.reset();
 
@@ -143,7 +141,6 @@ function save(event) {
 
   var entriesFormEl = document.querySelector('#entries-form-container');
   entriesFormEl.setAttribute('class', 'hidden');
-
   data.view = 'entries';
 }
 
